@@ -1,0 +1,73 @@
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">student ID</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Class</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Date of Birth</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of studentList">
+        <td>{{student.id}}</td>
+        <td>{{student.firstName}}</td>
+        <td>{{student.lastName}}</td>
+        <td>{{student.className}}</td>
+        <td>{{student.subject}}</td>
+        <td>{{student.dateOfBirth}}</td>
+        <td>
+            <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#editEmployee" (click) ="editEmployee(student)">Edit</button>
+            <button type="button" class="btn btn-outline-danger me-2" (click) = "deleteStudent(student.id)">Delete</button>
+            <button type="button" class="btn btn-outline-info btn-detail" (click) = "studentDetails(student.id)">Details</button>
+        </td>
+      </tr>
+     
+    </tbody>
+  </table>
+
+  
+  <!-- Edit Modal -->
+  <div class="modal fade" id="editEmployee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Employee</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="studentDetail">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">First Name</label>
+                    <input type="text" formControlName="firstName" class="form-control" id="firstName" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Last Name</label>
+                    <input type="text" formControlName="lastName" class="form-control" id="lastName" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Class</label>
+                    <input type="number" formControlName="className" class="form-control" id="className"
+                        aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Subject</label>
+                    <input type="text" formControlName="subject" class="form-control" id="subject" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Date Of Birth</label>
+                    <input type="text" formControlName="dateOfBirth" class="form-control" id="dateOfBirth"
+                        aria-describedby="emailHelp">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success" >Update</button>
+                </div>
+            </form>
+
+        </div>
+      
+      </div>
+    </div>
+  </div>

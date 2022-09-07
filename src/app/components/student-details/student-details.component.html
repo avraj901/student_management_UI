@@ -1,0 +1,22 @@
+<h2>Student Details</h2>
+<hr/>
+<div *ngIf="student">
+    <div>
+        <label><b>First Name:</b></label> {{student.firstName}}
+    </div>
+    <div>
+        <label><b>Last Name:</b></label> {{student.lastName}}
+    </div>
+    <div>
+        <label><b>Class Name:</b></label> {{student.className}}
+    </div>
+    <div>
+        <label><b>Subject:</b></label> {{student.subject}}
+    </div>
+    <div>
+        <label><b>Date Of Birth:</b></label> {{student.dateOfBirth}}
+    </div>
+</div>
+<br>
+<br>
+<button (click) = "employeeList()" class="btn btn-primary">Back to student List</button>

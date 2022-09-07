@@ -1,0 +1,29 @@
+<div class="container">
+<form [formGroup]="studentDetail">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">First Name</label>
+        <input type="text" formControlName="firstName" class="form-control" id="firstName" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Last Name</label>
+        <input type="text" formControlName="lastName" class="form-control" id="lastName" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Class</label>
+        <input type="number" formControlName="className" class="form-control" id="className"
+            aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Subject</label>
+        <input type="text" formControlName="subject" class="form-control" id="subject" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Date Of Birth</label>
+        <input type="text" formControlName="dateOfBirth" class="form-control" id="dateOfBirth"
+            aria-describedby="emailHelp">
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="addEmployee()">Add Employee</button>
+    </div>
+</form>
+</div>

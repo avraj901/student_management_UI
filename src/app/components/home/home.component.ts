@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { Student } from 'src/app/modal/student';
+import { StudentService } from 'src/app/service/student.service';
 
 @Component({
   selector: 'app-home',
@@ -9,23 +12,24 @@ import { Subject } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
 
-  studentDetail !: FormGroup;
+  students: Student = new Student();
 
-  constructor(private formBuilder : FormBuilder) { }
+  constructor(public studentService: StudentService, private router: Router) { }
 
   ngOnInit(): void {
 
-    this.studentDetail = this.formBuilder.group({
-      firstname : [''],
-      lastName : [''],
-      className : [''],
-      subject : [''],
-      dateOfBirth : ['']
-    })
   }
 
-  addEmployee(){
-    console.log(this.studentDetail);
+  addEmployee() {
+    const observable = this.studentService.addStudent(this.students)
+    observable.subscribe((response: any) => {
+      console.log(response);
+      alert("Student Added successfully");
+    },
+      function (error) {
+        console.log(error);
+        alert("Something went wrong please try again");
+      }
+    )
   }
-
 }

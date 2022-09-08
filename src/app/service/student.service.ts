@@ -12,11 +12,15 @@ export class StudentService {
   getStudentURL : string;
   deleteStudentURL: string;
   getStudentByIdURL: string;
+  updateStudentURL: string;
+  BASE_URL: string;
   constructor(private http : HttpClient) {
     this.addStudentURL = "http://localhost:9092/student";
     this.getStudentURL = "http://localhost:9092/allstudent";
     this.deleteStudentURL = "http://localhost:9092/student";
     this.getStudentByIdURL = "http://localhost:9092/student";
+    this.updateStudentURL = "http://localhost:9092/update";
+    this.BASE_URL = "";
    }
 
    addStudent(student : Student): Observable<Student>{
@@ -32,4 +36,7 @@ export class StudentService {
    getStudentById(id: number): Observable<any>{
      return this.http.get(`${this.getStudentByIdURL}/${id}`);
    }
+   updateStudent(student: Student, id: number) {
+    return this.http.put(`${this.updateStudentURL}/${id}`, student);
+  }
 }

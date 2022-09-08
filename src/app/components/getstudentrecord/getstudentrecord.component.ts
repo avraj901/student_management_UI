@@ -12,43 +12,51 @@ import { StudentService } from 'src/app/service/student.service';
 })
 export class GetstudentrecordComponent implements OnInit {
 
-  studentDetail !: FormGroup;
-  studentList : Student[] = [];
+  // studentDetail !: FormGroup;
+  students: Student = new Student();
+  studentList: Student[] = [];
 
 
-  constructor(private studentService : StudentService, private router: Router) {
-   
-   }
+  constructor(private studentService: StudentService, private router: Router) {
+
+  }
 
   ngOnInit(): void {
     this.getAllStudent();
   }
 
-  editEmployee(student : Student){
-    this.studentDetail.controls['id'].setValue(student.id);
-    this.studentDetail.controls['firstName'].setValue(student.firstName);
-    this.studentDetail.controls['lastName'].setValue(student.lastName);
-    this.studentDetail.controls['className'].setValue(student.className);
-    this.studentDetail.controls['subject'].setValue(student.subject);
-    this.studentDetail.controls['dateOfBirth'].setValue(student.dateOfBirth);
+  editStudent(id: number) {
+    this.studentService.getStudentById(id).subscribe(data => {
+      console.log(data);
+      this.students = data;
+    }, error => console.log(error));
   }
 
-  getAllStudent(){
+  getAllStudent() {
     this.studentService.getAllStudent().subscribe(res => {
       this.studentList = res;
-      console.log("response",res);
-    },err => {
+      console.log("response", res);
+    }, err => {
       console.log("error while fetching data. ")
     });
   }
-  deleteStudent(id: number){
+  deleteStudent(id: number) {
     this.studentService.deleteStudent(id).subscribe(data => {
       console.log(data);
+      alert("Student successfully Deleted");
       this.getAllStudent();
     },
-    error => console.log(error));
+      error => console.log(error));
+    alert("Something went wrong please try again");
   }
-  studentDetails(id: number){
-   this.router.navigate(['details',id])
+  studentDetails(id: number) {
+    this.router.navigate(['details', id])
+  }
+  updateStudent(student: Student, id: number) {
+    this.studentService.updateStudent(student, id).subscribe(data => {
+      console.log(data);
+      alert("Student daetails updated successfully");
+    }, error => console.log(error));
+    alert("Something went wrong please try again");
   }
 }

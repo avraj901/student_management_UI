@@ -13,13 +13,16 @@ export class StudentService {
   deleteStudentURL: string;
   getStudentByIdURL: string;
   updateStudentURL: string;
+  getStudentByClassId: string;
   BASE_URL: string;
+
   constructor(private http : HttpClient) {
     this.addStudentURL = "http://localhost:9092/student";
     this.getStudentURL = "http://localhost:9092/allstudent";
     this.deleteStudentURL = "http://localhost:9092/student";
     this.getStudentByIdURL = "http://localhost:9092/student";
     this.updateStudentURL = "http://localhost:9092/update";
+    this.getStudentByClassId = "http://localhost:9092/getbyclass"
     this.BASE_URL = "";
    }
 
@@ -38,5 +41,8 @@ export class StudentService {
    }
    updateStudent(student: Student, id: number) {
     return this.http.put(`${this.updateStudentURL}/${id}`, student);
+  }
+  getStudentListByClassId(id : number):Observable<Student[]>{
+    return this.http.get<Student[]>(`${this.getStudentByClassId}/${id}`);
   }
 }

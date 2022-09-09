@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { GetstudentrecordComponent } from './components/getstudentrecord/getstudentrecord.component';
 import { StudentDetailsComponent } from './components/student-details/student-details.component'
 import { FormsModule } from '@angular/forms';
+import { StudentListClasswiseComponent } from './components/student-list-classwise/student-list-classwise.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,9 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     AddstudentComponent,
     GetstudentrecordComponent,
-    StudentDetailsComponent
+    StudentDetailsComponent,
+    StudentListClasswiseComponent,
+   
   ],
   imports: [
     BrowserModule,

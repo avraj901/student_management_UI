@@ -12,7 +12,6 @@ import { StudentService } from 'src/app/service/student.service';
 })
 export class GetstudentrecordComponent implements OnInit {
 
-  // studentDetail !: FormGroup;
   students: Student = new Student();
   studentList: Student[] = [];
 
@@ -43,11 +42,10 @@ export class GetstudentrecordComponent implements OnInit {
   deleteStudent(id: number) {
     this.studentService.deleteStudent(id).subscribe(data => {
       console.log(data);
-      alert("Student successfully Deleted");
       this.getAllStudent();
-    },
-      error => console.log(error));
-    alert("Something went wrong please try again");
+      alert("Student successfully Deleted");
+    }, error => console.log(error));
+
   }
   studentDetails(id: number) {
     this.router.navigate(['details', id])
@@ -57,6 +55,8 @@ export class GetstudentrecordComponent implements OnInit {
       console.log(data);
       alert("Student daetails updated successfully");
     }, error => console.log(error));
-    alert("Something went wrong please try again");
+  }
+  studentListClassWise(id: number) {
+    this.router.navigate(["studentlist", id]);
   }
 }

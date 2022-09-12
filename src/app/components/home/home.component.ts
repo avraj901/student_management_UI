@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
 import { Student } from 'src/app/modal/student';
 import { StudentService } from 'src/app/service/student.service';
+import { GetstudentrecordComponent } from '../getstudentrecord/getstudentrecord.component';
 
 @Component({
   selector: 'app-home',
@@ -16,14 +15,15 @@ export class HomeComponent implements OnInit {
 
   constructor(public studentService: StudentService, private router: Router) { }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   addEmployee() {
     const observable = this.studentService.addStudent(this.students)
     observable.subscribe((response: any) => {
       console.log(response);
+      let getstudent = new GetstudentrecordComponent(this.studentService, this.router);
+      getstudent.getAllStudent();
+      this.router.navigate(['students']);
       alert("Student Added successfully");
     },
       function (error) {

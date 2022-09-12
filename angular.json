@@ -105,5 +105,8 @@
       }
     }
   },
-  "defaultProject": "student-management-UI"
+  "defaultProject": "student-management-UI",
+  "cli": {
+    "analytics": "362e120c-62d3-426a-b391-9bd12d28adfe"
+  }
 }

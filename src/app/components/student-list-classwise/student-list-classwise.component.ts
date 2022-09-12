@@ -10,21 +10,19 @@ import { StudentService } from 'src/app/service/student.service';
 })
 export class StudentListClasswiseComponent implements OnInit {
 
-  id : number = 0;
+  id: number = 0;
   studentList: Student[] = [];
-  constructor(private route : ActivatedRoute, private studentService : StudentService, private router: Router) { 
-
-  }
+  constructor(private route: ActivatedRoute, private studentService: StudentService, private router: Router) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.studentService.getStudentListByClassId(this.id).subscribe(data => {
       console.log(data);
       this.studentList = data;
-    }, error => console.log(error)); 
-  }
-  employeeList(){
-    this.router.navigate(['students'])
+    }, error => console.log(error));
   }
 
+  employeeList() {
+    this.router.navigate(['students'])
+  }
 }

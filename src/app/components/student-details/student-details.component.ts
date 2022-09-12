@@ -11,19 +11,18 @@ import { StudentService } from 'src/app/service/student.service';
 export class StudentDetailsComponent implements OnInit {
 
   id: number = 0;
-  student : Student = new Student();
+  student: Student = new Student();
 
   constructor(private route: ActivatedRoute, private router: Router, private studentService: StudentService) { }
 
   ngOnInit(): void {
-   this.id = this.route.snapshot.params['id'];
-   this.studentService.getStudentById(this.id).subscribe(data => {
-     console.log(data);
-     this.student = data;
-   }, error => console.log(error))
+    this.id = this.route.snapshot.params['id'];
+    this.studentService.getStudentById(this.id).subscribe(data => {
+      console.log(data);
+      this.student = data;
+    }, error => console.log(error))
   }
-  employeeList(){
+  employeeList() {
     this.router.navigate(['students']);
   }
-
 }

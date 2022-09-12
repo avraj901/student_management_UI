@@ -5,10 +5,9 @@ import { StudentDetailsComponent } from './components/student-details/student-de
 import { StudentListClasswiseComponent } from './components/student-list-classwise/student-list-classwise.component';
 
 const routes: Routes = [
-  // {path: '', redirectTo: 'student', pathMatch: 'full'},
-  {path: 'details/:id', component: StudentDetailsComponent },
-  {path: 'students', component: GetstudentrecordComponent },
-  {path: 'studentlist/:id', component: StudentListClasswiseComponent}
+  { path: 'details/:id', component: StudentDetailsComponent },
+  { path: 'students', component: GetstudentrecordComponent },
+  { path: 'studentlist/:id', component: StudentListClasswiseComponent }
 ];
 
 @NgModule({
